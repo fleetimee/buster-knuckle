@@ -7,7 +7,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import swal from "sweetalert";
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,11 +33,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 async function loginUser(credentials) {
-  const response = await axios.post(
-    "https://fleetime.herokuapp.com/api/login",
-    credentials
-  );
-  return response.data;
+  return fetch("https://fleetime.herokuapp.com/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
 }
 
 export default function Signin() {
