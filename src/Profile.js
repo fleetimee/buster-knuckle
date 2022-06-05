@@ -56,10 +56,6 @@ const UsingAxios = () => {
       });
   };
 
-  const userCount = () => {
-    return userTable.length;
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
