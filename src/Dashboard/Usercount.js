@@ -7,7 +7,7 @@ import axios from "axios";
 //   event.preventDefault();
 // }
 
-export default function Deposits() {
+export default function Usercount() {
   const url = "https://fleetime.herokuapp.com/api/tbluser";
   const [data, setData] = useState([]);
 
@@ -23,7 +23,7 @@ export default function Deposits() {
   return (
     <React.Fragment>
       <Title>User Terdaftar</Title>
-      <Typography component="p" variant="h4">
+      <Typography component="p" variant="h1" mt={2} ml={4}>
         {data.length}
       </Typography>
     </React.Fragment>

@@ -16,9 +16,9 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { mainListItems, secondaryListItems } from "./listItems";
-import Chart from "./Chart";
-import Deposits from "./Deposits";
-import Orders from "./Orders";
+import Greeting from "./Greeting";
+import Usercount from "./Usercount";
+import Showcasetable from "./Showcasetable";
 
 function Copyright(props) {
   return (
@@ -30,7 +30,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        fleetime
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -171,7 +171,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                  <Greeting />
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
@@ -184,13 +184,12 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <Usercount />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
+                  <Showcasetable />
                 </Paper>
               </Grid>
             </Grid>

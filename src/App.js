@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signin from "./Signin";
-import Profile from "./Profile";
-import DataGridd from "./DataGrid";
 import Dashboard from "./Dashboard/Dashboard";
 
 function App() {
@@ -18,9 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/data" element={<DataGridd />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/" element={<Profile />} />
+          <Route path="/" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

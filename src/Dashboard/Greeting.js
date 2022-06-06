@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
-export default function Chart() {
+export default function Greeting() {
   return (
     <React.Fragment>
       <Title>Welcome</Title>
