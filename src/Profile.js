@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -9,7 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import axios from "axios";
+import DataGrid from "./DataGrid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UsingAxios = () => {
-  const [userTable, setUserTable] = useState([]);
+  // const [userTable, setUserTable] = useState([]);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -48,17 +48,17 @@ const UsingAxios = () => {
     window.location.href = "/";
   };
 
-  const fetchData = async () => {
-    axios
-      .get("https://fleetime.herokuapp.com/api/mstdebitur")
-      .then((response) => {
-        setUserTable(response.data);
-      });
-  };
+  // const fetchData = async () => {
+  //   axios
+  //     .get("https://fleetime.herokuapp.com/api/mstdebitur")
+  //     .then((response) => {
+  //       setUserTable(response.data);
+  //     });
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   return (
     <div className={classes.root}>
@@ -68,7 +68,7 @@ const UsingAxios = () => {
             Profile
           </Typography>
           <div>
-            <IconButton onClick={handleMenu} color="white"></IconButton>
+            <IconButton onClick={handleMenu} color="secondary"></IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
@@ -80,20 +80,10 @@ const UsingAxios = () => {
           </div>
         </Toolbar>
       </AppBar>
-      <div>
-        {userTable.length > 0 && (
-          <ul>
-            {userTable.map((user) => (
-              <li key={user.id}>{user.nama_debitur}</li>
-            ))}
-          </ul>
-        )}
-      </div>
       <Card className={classes.root} variant="outlined">
         <CardContent>
-          <Typography variant="h5">
-            Welcome {user.username} {userTable.length}
-          </Typography>
+          <Typography variant="h5">Welcome {user.username}</Typography>
+          <DataGrid />
         </CardContent>
       </Card>
     </div>
