@@ -1,6 +1,4 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 import Title from "./Title";
 import { Typography } from "@mui/material";
