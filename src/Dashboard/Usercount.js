@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
-import Title from "./Title";
+import Title from "../Components/Title";
 import axios from "axios";
 
 // function preventDefault(event) {

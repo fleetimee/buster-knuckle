@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import axios from "axios";
 import MaterialTable from "material-table";
-import tableIcons from "./tableIcons";
+import tableIcons from "../Components/tableIcons";
 
 export default function Showcasetable() {
   const [user, setUser] = React.useState([]);

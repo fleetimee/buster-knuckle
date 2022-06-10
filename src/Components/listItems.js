@@ -4,31 +4,44 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import UserIcon from "@mui/icons-material/AccountCircle";
+
+import { Link } from "react-router-dom";
 
 import LogoutIcon from "@mui/icons-material/Logout";
 
+import swal from "sweetalert";
+
 const handleLogout = (e) => {
   e.preventDefault();
-
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-  window.location.href = "/";
+  swal({
+    title: "Are you sure?",
+    text: "You will be logged out",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+  });
 };
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/dashboard" state="">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/nasabah">
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <UserIcon />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="Users" />
     </ListItemButton>
     {/* <ListItemButton>
       <ListItemIcon>
@@ -56,11 +69,11 @@ export const secondaryListItems = (
     <ListSubheader component="div" inset>
       User Setting
     </ListSubheader>
-    <ListItemButton>
+    <ListItemButton primary="Logout" onClick={handleLogout}>
       <ListItemIcon>
-        <LogoutIcon primary="Logout" onClick={handleLogout} />
+        <LogoutIcon />
       </ListItemIcon>
-      <ListItemText primary="Logout" onClick={handleLogout} />
+      <ListItemText primary="Logout" />
     </ListItemButton>
     {/* <ListItemButton>
       <ListItemIcon>

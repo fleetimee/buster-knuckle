@@ -57,7 +57,10 @@ export default function Signin() {
     if (data.token) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      window.location.href = "/dashboard";
+      swal("Success!", "You are now logged in", "success");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
     } else {
       swal("Error", "Invalid credentials", "error");
     }

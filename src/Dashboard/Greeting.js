@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Title from "./Title";
+import Title from "../Components/Title";
 import { Typography } from "@mui/material";
 
 const user = JSON.parse(localStorage.getItem("user"));
