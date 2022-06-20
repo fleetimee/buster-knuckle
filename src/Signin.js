@@ -54,15 +54,17 @@ export default function Signin() {
       password,
     };
     const data = await loginUser(credentials);
-    if (data.token) {
+    if (data.token && data.user.grup.nama_grup === "Admin") {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       swal("Success!", "You are now logged in", "success");
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
+    } else if (data.token) {
+      swal("Error!", "Hanya admin yang bisa masuk panel admin", "error");
     } else {
-      swal("Error", "Invalid credentials", "error");
+      swal("Error!", "Username atau password salah", "error");
     }
   };
 

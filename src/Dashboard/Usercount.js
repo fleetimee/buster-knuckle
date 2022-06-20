@@ -23,7 +23,7 @@ export default function Usercount() {
   return (
     <React.Fragment>
       <Title>User Terdaftar</Title>
-      <Typography component="p" variant="h1" mt={2} ml={4}>
+      <Typography component="p" variant="h1" align="center">
         {data.length}
       </Typography>
     </React.Fragment>

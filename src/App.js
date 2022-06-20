@@ -3,7 +3,9 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signin from "./Signin";
 import Dashboard from "./Dashboard/Dashboard";
-import Nasabah from "./Nasabah/Nasabah";
+
+import Group from "./Group/Group";
+import Groupcreate from "./Group/Groupcreate";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -16,8 +18,11 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
         <Routes>
-          <Route path="/nasabah" element={<Nasabah />} />
+          <Route path="/group" element={<Group />} />
+          <Route path="/groupadd" element={<Groupcreate />} />
+
           <Route path="/dashboard" element={<Dashboard />} />
+
           <Route path="/" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>

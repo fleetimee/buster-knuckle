@@ -9,8 +9,9 @@ export default function Greeting() {
   return (
     <React.Fragment>
       <Title>Welcome</Title>
-      <Typography>
+      <Typography align="center" variant="">
         <h1>{user.nama_lengkap}</h1>
+        Anda login sebagai {user.grup.nama_grup}
       </Typography>
     </React.Fragment>
   );

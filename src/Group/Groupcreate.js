@@ -16,9 +16,8 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { mainListItems, secondaryListItems } from "../Components/listItems";
-import Greeting from "./Greeting";
-import Usercount from "./Usercount";
-import Showcasetable from "./Showcasetable";
+import Grouplist from "./Grouplist";
+import UserCreate from "./Groupadd";
 
 function Copyright(props) {
   return (
@@ -84,9 +83,17 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function GroupCreate() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -116,12 +123,13 @@ function DashboardContent() {
             </IconButton>
 
             <Typography
+              component="h1"
               variant="h6"
               color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Home
+              Group
             </Typography>
           </Toolbar>
         </AppBar>
@@ -160,38 +168,11 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
+
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  <Greeting />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  <Usercount />
-                </Paper>
-              </Grid>
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Showcasetable />
-                </Paper>
+                <UserCreate />
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
@@ -202,6 +183,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
+export default function Group() {
+  return <GroupCreate />;
 }

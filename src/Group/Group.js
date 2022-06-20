@@ -16,6 +16,7 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { mainListItems, secondaryListItems } from "../Components/listItems";
+import Grouplist from "./Grouplist";
 
 function Copyright(props) {
   return (
@@ -91,7 +92,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const mdTheme = createTheme();
 
-function NasabahContent() {
+function GroupContent() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -127,10 +128,11 @@ function NasabahContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Nasabah
+              Group
             </Typography>
           </Toolbar>
         </AppBar>
+
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -151,6 +153,7 @@ function NasabahContent() {
             {secondaryListItems}
           </List>
         </Drawer>
+
         <Box
           component="main"
           sx={{
@@ -164,10 +167,11 @@ function NasabahContent() {
           }}
         >
           <Toolbar />
+
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Item>xs=6</Item>
+                <Grouplist />
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
@@ -178,6 +182,6 @@ function NasabahContent() {
   );
 }
 
-export default function Nasabah() {
-  return <NasabahContent />;
+export default function Group() {
+  return <GroupContent />;
 }

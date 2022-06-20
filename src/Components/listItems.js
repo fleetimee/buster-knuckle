@@ -4,7 +4,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import UserIcon from "@mui/icons-material/AccountCircle";
+import UserIcon from "@mui/icons-material/GroupAddOutlined";
 
 import { Link } from "react-router-dom";
 
@@ -31,17 +31,20 @@ const handleLogout = (e) => {
 
 export const mainListItems = (
   <React.Fragment>
+    {/* This is home route */}
     <ListItemButton component={Link} to="/dashboard" state="">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/nasabah">
+
+    {/* This is group route */}
+    <ListItemButton component={Link} to="/group">
       <ListItemIcon>
         <UserIcon />
       </ListItemIcon>
-      <ListItemText primary="Users" />
+      <ListItemText primary="Group" />
     </ListItemButton>
     {/* <ListItemButton>
       <ListItemIcon>
