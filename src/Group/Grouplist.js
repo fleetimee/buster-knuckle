@@ -27,9 +27,7 @@ export default function Grouplist() {
   };
 
   const deleteGroup = async (id) => {
-    const result = await axios.delete(
-      `https://fleetime.herokuapp.com/api/tblgrup/${id}`
-    );
+    await axios.delete(`https://fleetime.herokuapp.com/api/tblgrup/${id}`);
     fetchData();
   };
 
