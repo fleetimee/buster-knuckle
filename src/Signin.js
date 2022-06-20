@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,8 @@ async function loginUser(credentials) {
 }
 
 export default function Signin() {
+  const navigate = useNavigate();
+
   const classes = useStyles();
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
@@ -59,7 +62,7 @@ export default function Signin() {
       localStorage.setItem("user", JSON.stringify(data.user));
       swal("Success!", "You are now logged in", "success");
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/dashboard");
       }, 1000);
     } else if (data.token) {
       swal("Error!", "Hanya admin yang bisa masuk panel admin", "error");

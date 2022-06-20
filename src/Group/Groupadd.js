@@ -44,7 +44,7 @@ export default function UserCreate() {
       deskripsi: deskripsi,
     };
     axios
-      .post("http://fleetime.herokuapp.com/api/tblgrup", data)
+      .post("https://fleetime.herokuapp.com/api/tblgrup", data)
       .then((res) => {
         if (res.status === 200) {
           MySwal.fire({
