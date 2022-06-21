@@ -13,7 +13,7 @@ export default function Usercount() {
 
   const fetchData = async () => {
     const result = await axios.get(url);
-    setData(result.data);
+    setData(result.data.tbluser);
   };
 
   useEffect(() => {

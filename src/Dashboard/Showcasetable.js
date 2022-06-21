@@ -10,8 +10,11 @@ export default function Showcasetable() {
 
   const fetchData = async () => {
     const result = await axios.get(url);
-    if (result.data.length > 0) {
-      setUser(result.data);
+
+    console.log(result);
+
+    if (result.data.tbluser.length > 0) {
+      setUser(result.data.tbluser);
     } else {
       setUser([]);
     }
