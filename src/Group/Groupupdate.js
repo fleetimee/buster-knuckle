@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -8,7 +8,7 @@ import Container from "@material-ui/core/Container";
 import axios from "axios";
 import swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MySwal = withReactContent(swal);
 
@@ -32,10 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserCreate() {
+export default function GroupUpdate() {
   const navigate = useNavigate();
 
   const classes = useStyles();
+
+  const { id } = useParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,12 +46,12 @@ export default function UserCreate() {
       deskripsi: deskripsi,
     };
     axios
-      .post("https://fleetime.herokuapp.com/api/tblgrup", data)
+      .put("https://fleetime.herokuapp.com/api/tblgrup/" + id, data)
       .then((res) => {
         if (res.status === 200) {
           MySwal.fire({
             title: "Success",
-            text: "Group Created",
+            text: "Group Edited",
             icon: "success",
             showConfirmButton: false,
           });
@@ -58,6 +60,15 @@ export default function UserCreate() {
       });
   };
 
+  useEffect(() => {
+    fetch("https://fleetime.herokuapp.com/api/tblgrup/" + id)
+      .then((res) => res.json())
+      .then((result) => {
+        setNamaGrup(result.nama_grup);
+        setDeskripsi(result.deskripsi);
+      });
+  }, [id]);
+
   const [nama_grup, setNamaGrup] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
 
@@ -65,7 +76,7 @@ export default function UserCreate() {
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Add Grup
+          Edit Grup
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -77,6 +88,7 @@ export default function UserCreate() {
                 required
                 fullWidth
                 id="nama_grup"
+                value={nama_grup}
                 label="Nama Grup"
                 onChange={(e) => setNamaGrup(e.target.value)}
                 autoFocus
@@ -88,6 +100,7 @@ export default function UserCreate() {
                 required
                 fullWidth
                 id="deskripsi"
+                value={deskripsi}
                 label="Deskripsi"
                 onChange={(e) => setDeskripsi(e.target.value)}
               />

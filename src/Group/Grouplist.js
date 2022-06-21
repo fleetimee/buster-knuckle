@@ -10,13 +10,14 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import Title from "../Components/Title";
 import Swal from "sweetalert2";
 
 export default function Grouplist() {
+  const navigate = useNavigate();
   const [group, setGroup] = React.useState([]);
 
   const url = "https://fleetime.herokuapp.com/api/tblgrup";
@@ -24,6 +25,10 @@ export default function Grouplist() {
   const fetchData = async () => {
     const result = await axios.get(url);
     setGroup(result.data);
+  };
+
+  const editGroup = async (id) => {
+    navigate(`/groupupdate/${id}`);
   };
 
   const deleteGroup = async (id) => {
@@ -71,7 +76,9 @@ export default function Grouplist() {
                         color="primary"
                         aria-label="outlined primary button group"
                       >
-                        <Button>Edit</Button>
+                        <Button onClick={() => editGroup(group.id)}>
+                          Edit
+                        </Button>
                         <Button
                           onClick={() =>
                             Swal.fire({

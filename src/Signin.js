@@ -57,6 +57,8 @@ export default function Signin() {
       password,
     };
     const data = await loginUser(credentials);
+
+    // Check if the user is admin
     if (data.token && data.user.grup.nama_grup === "Admin") {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));

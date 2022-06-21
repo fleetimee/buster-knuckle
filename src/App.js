@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard/Dashboard";
 
 import Group from "./Group/Group";
 import Groupcreate from "./Group/Groupcreate";
+import GroupEdit from "./Group/Groupedit";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/group" element={<Group />} />
           <Route path="/groupadd" element={<Groupcreate />} />
+          <Route path="/groupupdate/:id" element={<GroupEdit />} />
 
           <Route path="/dashboard" element={<Dashboard />} />
 
