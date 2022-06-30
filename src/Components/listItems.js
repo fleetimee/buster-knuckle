@@ -7,6 +7,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import UserIcon from "@mui/icons-material/GroupAddOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import PeopleIcon from "@mui/icons-material/People";
+import OfficeIcon from "@mui/icons-material/Place";
 
 import { Link } from "react-router-dom";
 
@@ -63,6 +64,13 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Users" />
+    </ListItemButton>
+
+    <ListItemButton component={Link} to="/kantor">
+      <ListItemIcon>
+        <OfficeIcon />
+      </ListItemIcon>
+      <ListItemText primary="Kantor" />
     </ListItemButton>
   </React.Fragment>
 );

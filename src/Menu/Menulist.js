@@ -50,7 +50,7 @@ export default function Menulist() {
             <Box>
               <Link to="/groupadd">
                 <Button variant="contained" color="primary">
-                  Buat Grup
+                  Buat Menu
                 </Button>
               </Link>
             </Box>

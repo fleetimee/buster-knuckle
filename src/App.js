@@ -14,6 +14,10 @@ import Users from "./Users/Users";
 import Userscreate from "./Users/Userscreate";
 import Usersedit from "./Users/Usersedit";
 
+import Kantor from "./Kantor/Kantor";
+import KantorsCreate from "./Kantor/Kantorcreate";
+import KantorEdit from "./Kantor/Kantoredit";
+
 function App() {
   const token = localStorage.getItem("token");
 
@@ -32,6 +36,10 @@ function App() {
           <Route path="/group" element={<Group />} />
           <Route path="/groupadd" element={<Groupcreate />} />
           <Route path="/groupupdate/:id" element={<GroupEdit />} />
+
+          <Route path="/kantor" element={<Kantor />} />
+          <Route path="/kantoradd" element={<KantorsCreate />} />
+          <Route path="/kantorupdate/:id" element={<KantorEdit />} />
 
           <Route path="/menu" element={<Menu />} />
 
