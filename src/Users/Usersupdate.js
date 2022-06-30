@@ -8,7 +8,7 @@ import Container from "@material-ui/core/Container";
 import axios from "axios";
 import swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AsyncSelect from "react-select/async";
 
 import InputLabel from "@mui/material/InputLabel";
@@ -35,7 +35,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserCreate() {
+export default function UserUpdate() {
+  /* A hook that allows you to access the parameters of the URL. */
+  const { id } = useParams();
+
   /* A hook that allows you to navigate to a different route. */
   const navigate = useNavigate();
 
@@ -65,12 +68,12 @@ export default function UserCreate() {
       kantorId: kantorId.id,
     };
     axios
-      .post("https://fleetime.herokuapp.com/api/tbluser", data)
+      .put("https://fleetime.herokuapp.com/api/tbluser/" + id, data)
       .then((res) => {
         if (res.status === 200) {
           MySwal.fire({
             title: "Success",
-            text: "Users Created",
+            text: "Users Edited",
             icon: "success",
             showConfirmButton: false,
           });
@@ -78,9 +81,6 @@ export default function UserCreate() {
         }
       });
   };
-
-  /* The URL of the API. */
-  // const url = "https://fleetime.herokuapp.com/api/tblgrup";
 
   /* A hook that allows you to use the state of the component. */
   const [nama_lengkap, setNamaLengkap] = useState("");
@@ -90,6 +90,10 @@ export default function UserCreate() {
   const [grupId, setGrup] = useState();
   const [kantorId, setKantor] = useState();
 
+  /**
+   * It fetches data from an API and returns the data.
+   * @returns An array of objects.
+   */
   const fetchData = async () => {
     return await axios
       .get("https://fleetime.herokuapp.com/api/tblgrup")
@@ -99,6 +103,10 @@ export default function UserCreate() {
       });
   };
 
+  /**
+   * It returns a promise that resolves to the result of an axios get request.
+   * @returns An array of objects.
+   */
   const fetchDataKantor = async () => {
     return await axios
       .get("https://fleetime.herokuapp.com/api/tblkantor")
@@ -109,25 +117,37 @@ export default function UserCreate() {
   };
 
   /* A hook that is called after every render. */
-  useEffect(() => {});
+  useEffect(() => {
+    fetch("https://fleetime.herokuapp.com/api/tbluser/" + id)
+      .then((res) => res.json())
+      .then((result) => {
+        setNamaLengkap(result.nama_lengkap);
+        setEmail(result.email);
+        setUsername(result.username);
+        setPassword(result.password);
+        setGrup(result.grup);
+        setKantor(result.kantor);
+      });
+  }, [id]);
 
   return (
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Add Users
+          Edit Users
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="nama_grup"
-                name="nama_grup"
+                autoComplete="nama_lengkap"
+                name="nama_lengkap"
                 variant="outlined"
                 required
                 fullWidth
-                id="nama_grup"
+                id="nama_lengkap"
                 label="Nama Lengkap"
+                value={nama_lengkap}
                 onChange={(e) => setNamaLengkap(e.target.value)}
                 autoFocus
               />
@@ -137,7 +157,8 @@ export default function UserCreate() {
                 variant="outlined"
                 required
                 fullWidth
-                id="deskripsi"
+                id="email"
+                value={email}
                 label="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -147,7 +168,8 @@ export default function UserCreate() {
                 variant="outlined"
                 required
                 fullWidth
-                id="deskripsi"
+                value={username}
+                id="username"
                 label="Username"
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -158,7 +180,8 @@ export default function UserCreate() {
                 variant="outlined"
                 required
                 fullWidth
-                id="deskripsi"
+                value={password}
+                id="password"
                 label="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -168,6 +191,7 @@ export default function UserCreate() {
               <AsyncSelect
                 cacheOptions
                 defaultOptions
+                value={grupId}
                 loadOptions={fetchData}
                 getOptionLabel={(e) => e.nama_grup}
                 getOptionValue={(option) => option.id}
@@ -177,10 +201,11 @@ export default function UserCreate() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel>Grup</InputLabel>
+              <InputLabel>Kantor</InputLabel>
               <AsyncSelect
                 cacheOptions
                 defaultOptions
+                value={kantorId}
                 loadOptions={fetchDataKantor}
                 getOptionLabel={(e) => e.nama_kantor}
                 getOptionValue={(option) => option.id}
@@ -189,6 +214,7 @@ export default function UserCreate() {
               />
             </Grid>
           </Grid>
+
           <Button
             type="submit"
             fullWidth
@@ -196,7 +222,7 @@ export default function UserCreate() {
             color="primary"
             className={classes.submit}
           >
-            Create
+            Edit
           </Button>
         </form>
       </div>

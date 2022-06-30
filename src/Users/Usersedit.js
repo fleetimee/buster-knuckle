@@ -15,7 +15,8 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { mainListItems, secondaryListItems } from "../Components/listItems";
-import UserCreate from "./Usersadd";
+
+import UsersUpdate from "./Usersupdate";
 
 function Copyright(props) {
   return (
@@ -83,7 +84,7 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme();
 
-function UsersCreate() {
+function UsersEdit() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -162,7 +163,7 @@ function UsersCreate() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <UserCreate />
+                <UsersUpdate />
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
@@ -174,5 +175,5 @@ function UsersCreate() {
 }
 
 export default function Group() {
-  return <UsersCreate />;
+  return <UsersEdit />;
 }

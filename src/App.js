@@ -12,6 +12,7 @@ import Menu from "./Menu/Menu";
 
 import Users from "./Users/Users";
 import Userscreate from "./Users/Userscreate";
+import Usersedit from "./Users/Usersedit";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/users" element={<Users />} />
           <Route path="/userscreate" element={<Userscreate />} />
+          <Route path="/usersupdate/:id" element={<Usersedit />} />
 
           <Route path="/group" element={<Group />} />
           <Route path="/groupadd" element={<Groupcreate />} />

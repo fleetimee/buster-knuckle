@@ -10,13 +10,15 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import Title from "../Components/Title";
 import Swal from "sweetalert2";
 
 export default function Userlist() {
+  const navigate = useNavigate();
+
   const [user, setUser] = React.useState([]);
 
   const url = "https://fleetime.herokuapp.com/api/tbluser";
@@ -26,9 +28,9 @@ export default function Userlist() {
     setUser(result.data.tbluser);
   };
 
-  // const editGroup = async (id) => {
-  //   navigate(`/groupupdate/${id}`);
-  // };
+  const editUsers = async (id) => {
+    navigate(`/usersupdate/${id}`);
+  };
 
   const deleteUsers = async (id) => {
     await axios.delete(`https://fleetime.herokuapp.com/api/tbluser/${id}`);
@@ -83,7 +85,7 @@ export default function Userlist() {
                         color="primary"
                         aria-label="outlined primary button group"
                       >
-                        <Button>Edit</Button>
+                        <Button onClick={() => editUsers(user.id)}>Edit</Button>
                         <Button
                           onClick={() =>
                             Swal.fire({

@@ -10,14 +10,13 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 import Title from "../Components/Title";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 export default function Menulist() {
-  const navigate = useNavigate();
   const [menu, setMenu] = React.useState([]);
 
   const url = "https://fleetime.herokuapp.com/api/tblmenu";

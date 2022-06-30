@@ -83,7 +83,7 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme();
 
-function GroupContent() {
+function UsersContent() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -119,7 +119,7 @@ function GroupContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Group
+              Users
             </Typography>
           </Toolbar>
         </AppBar>
@@ -173,6 +173,6 @@ function GroupContent() {
   );
 }
 
-export default function Group() {
-  return <GroupContent />;
+export default function Users() {
+  return <UsersContent />;
 }
