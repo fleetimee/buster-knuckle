@@ -24,7 +24,7 @@ export default function Menulist() {
 
   const fetchData = async () => {
     const result = await axios.get(url);
-    setMenu(result.data);
+    setMenu(result.data.menu);
   };
 
   // const editGroup = async (id) => {
@@ -46,7 +46,7 @@ export default function Menulist() {
         <Paper>
           <Box>
             <Box>
-              <Title>Group List</Title>
+              <Title>Menu List</Title>
             </Box>
             <Box>
               <Link to="/groupadd">

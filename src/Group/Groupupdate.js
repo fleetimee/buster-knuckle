@@ -113,7 +113,7 @@ export default function GroupUpdate() {
             color="primary"
             className={classes.submit}
           >
-            Create
+            Edit
           </Button>
         </form>
       </div>

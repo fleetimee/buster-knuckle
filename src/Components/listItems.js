@@ -5,6 +5,8 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import UserIcon from "@mui/icons-material/GroupAddOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+import PeopleIcon from "@mui/icons-material/People";
 
 import { Link } from "react-router-dom";
 
@@ -46,24 +48,22 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Group" />
     </ListItemButton>
-    {/* <ListItemButton>
+
+    {/* This is menu route */}
+    <ListItemButton component={Link} to="/menu">
+      <ListItemIcon>
+        <MenuIcon />
+      </ListItemIcon>
+      <ListItemText primary="Menu" />
+    </ListItemButton>
+
+    {/* This is user route */}
+    <ListItemButton component={Link} to="/users">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="Users" />
     </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton> */}
   </React.Fragment>
 );
 

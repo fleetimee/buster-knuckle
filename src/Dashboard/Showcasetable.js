@@ -35,20 +35,6 @@ export default function Showcasetable() {
   return (
     <React.Fragment>
       <MaterialTable
-        actions={[
-          {
-            icon: tableIcons.Edit,
-            tooltip: "Save User",
-            onClick: (rowData) => {
-              user.setState({ dialogOpen: true });
-            },
-          },
-          {
-            icon: tableIcons.Delete,
-            tooltip: "Delete User",
-            onClick: (event, user) => alert("You deleted " + user.username),
-          },
-        ]}
         title={"Recent User"}
         icons={tableIcons}
         columns={columns}
